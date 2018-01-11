@@ -1,3 +1,7 @@
+if [ -f /etc/profile ]; then
+    PATH=""
+    source /etc/profile
+fi
 # Path to your oh-my-zsh installation.
 export ZSH=/Users/Jingkai/.oh-my-zsh
 
@@ -49,13 +53,14 @@ ZSH_THEME="spaceship"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git autojump dirhistory vi-mode zsh-autosuggestions nvm)
-
-# User configuration
-export PATH="/Users/Jingkai/github/depot_tools:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Users/Jingkai/zaihui/phabricator/arcanist/bin/"
-# export MANPATH="/usr/local/man:$MANPATH"
+plugins=(git autojump dirhistory vi-mode zsh-autosuggestions)
 
 source $ZSH/oh-my-zsh.sh
+
+# User configuration
+# export PATH="/Users/Jingkai/github/depot_tools:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
+# export MANPATH="/usr/local/man:$MANPATH"
+#
 
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
@@ -96,6 +101,10 @@ function stop_proxy {
 function get_lines {
     extension=$1
     find . -name "*.${extension}" -not -path "**/node_modules/*"| xargs wc -l
+}
+
+function toggle_hidden {
+  defaults write com.apple.finder AppleShowAllFiles $1
 }
 
 # Zaihui settings
@@ -144,9 +153,15 @@ alias tpm="npm --registry=https://registry.npm.taobao.org"
 alias hpm="npm --registry=https://tnt.kezaihui.com"
 alias hyarn="yarn --registry=https://tnt.kezaihui.com"
 alias deploy_atom="rm -rf ~/.atom/packages/fuzzy-finder-prefix && cp -r ~/github/fuzzy-finder-prefix ~/.atom/packages/"
-alias chrome="/usr/bin/open -a '/Applications/Google Chrome.app'"
+alias code="/usr/bin/open -a '/Applications/Visual Studio Code.app'"
 alias govps="ssh root@23.83.229.230 -p 28557"
 alias tmuxk="tmux ls | grep : | cut -d. -f1 | xargs kill"
+
+# chrome aliases
+#alias chrome="/usr/bin/open -a '/Applications/Google Chrome.app'"
+alias chrome="/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome"
+alias chrome-canary="/Applications/Google\ Chrome\ Canary.app/Contents/MacOS/Google\ Chrome\ Canary"
+alias chromium="/Applications/Chromium.app/Contents/MacOS/Chromium"
 
 # show time in history logs
 export HISTTIMEFORMAT="%F %T `whoami` "
@@ -293,13 +308,6 @@ SPACESHIP_VI_MODE_INSERT="[I]"
 SPACESHIP_VI_MODE_NORMAL="[N]"
 SPACESHIP_VI_MODE_COLOR="white"
 
-
-# nvm ENV
-export NVM_DIR="/Users/Jingkai/.nvm"
-export NVM_NODEJS_ORG_MIRROR=https://npm.taobao.org/mirrors/node
-
-# [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
-source $NVM_DIR//nvm.sh
 export TERM=xterm-256color
 
 # tmux env
@@ -317,3 +325,17 @@ export CHROMEDRIVER_CDNURL=http://npm.taobao.org/mirrors/chromedriver
 export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.tuna.tsinghua.edu.cn/homebrew-bottles
 
 source "/Users/Jingkai/.oh-my-zsh/custom/themes/spaceship.zsh-theme"
+
+# virtualenvwrapper env 
+export WORKON_HOME=~/Virtualenvs
+source /usr/local/bin/virtualenvwrapper.sh
+
+# nvm ENV
+# need to stay in bottom
+export NVM_DIR="/Users/Jingkai/.nvm"
+export NODEJS_ORG_MIRROR=https://npm.taobao.org/mirrors/node
+
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+
