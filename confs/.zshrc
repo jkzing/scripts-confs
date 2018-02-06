@@ -156,10 +156,11 @@ alias deploy_atom="rm -rf ~/.atom/packages/fuzzy-finder-prefix && cp -r ~/github
 alias code="/usr/bin/open -a '/Applications/Visual Studio Code.app'"
 alias govps="ssh root@23.83.229.230 -p 28557"
 alias tmuxk="tmux ls | grep : | cut -d. -f1 | xargs kill"
+alias flush_dns="sudo killall -HUP mDNSResponder;sudo killall mDNSResponderHelper;sudo dscacheutil -flushcache"
 
 # chrome aliases
-#alias chrome="/usr/bin/open -a '/Applications/Google Chrome.app'"
-alias chrome="/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome"
+alias chrome="/usr/bin/open -a '/Applications/Google Chrome.app'"
+# alias chrome="/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome"
 alias chrome-canary="/Applications/Google\ Chrome\ Canary.app/Contents/MacOS/Google\ Chrome\ Canary"
 alias chromium="/Applications/Chromium.app/Contents/MacOS/Chromium"
 
