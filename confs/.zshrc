@@ -157,6 +157,7 @@ alias code="/usr/bin/open -a '/Applications/Visual Studio Code.app'"
 alias govps="ssh root@23.83.229.230 -p 28557"
 alias tmuxk="tmux ls | grep : | cut -d. -f1 | xargs kill"
 alias flush_dns="sudo killall -HUP mDNSResponder;sudo killall mDNSResponderHelper;sudo dscacheutil -flushcache"
+alias kbs="kubectl"
 
 # chrome aliases
 alias chrome="/usr/bin/open -a '/Applications/Google Chrome.app'"
